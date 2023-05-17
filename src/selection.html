@@ -10,6 +10,7 @@
 		<!-- Main Stylesheet & Scripts -->
 		<link rel="stylesheet" href="./css/selection.css" />
 		<script src="./js/selection.js" type="module"></script>
+		<script src="./js/tarotCards.js" type="module"></script>
 	</head>
 
 	<body>
@@ -19,6 +20,19 @@
 					<h2>Tarot Card Reading</h2>
 					<h4>Please select three cards:</h4>
 					<button>Shuffle</button>
+					<div class="cards-to-select">
+						<!-- this is where the 8 shuffled cards, face down will go -->
+					</div>
+					<button class="submit-selection"> Submit</button>
+				</header>
+			</section>
+			<section id="fortune-page">
+				<header>
+					<h2>Tarot Card Reading</h2>
+					<h4>Here are your fortunes:</h4>
+					<div class="display-fortunes">
+						<!-- this is where the fortune readings go -->
+					</div>
 				</header>
 			</section>
 		</main>
