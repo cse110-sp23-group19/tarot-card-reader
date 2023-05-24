@@ -1,31 +1,72 @@
-// window.addEventListener('DOMContentLoaded', init);
-
-// function init() {
-//   }
 import { cards } from "./tarotCards.js";
+
+let indexes = [];
+
+let selectedCards = [];
+
+const layout = document.getElementsByClassName("cards-to-select")[0];
 
 /**
  *
- * @returns array of 8 indexes which refer to 8 random cards in the deck
+ * @returns array of 12 indexes which refer to 12 random cards in the deck
  */
 function shuffleDeck() {
-	const indexes = [];
-	while (indexes.length < 3) {
+	//const indexes = [];
+	selectedCards = [];
+	indexes = [];
+	while (indexes.length < 12) {
 		const randomIndex = Math.floor(Math.random() * 78);
 		if (!indexes.includes(randomIndex)) {
 			//add index to array
 			indexes.push(randomIndex);
 		}
 	}
+
+	layout.innerHTML = "";
+
+	indexes.forEach((elem) => {
+		const newFortune = document.createElement("fortune-card");
+		newFortune.data = cards.tarot[elem];
+		layout.appendChild(newFortune); //
+	});
+
+	const layoutChildren = layout.children;
+	for (let i = 0; i < 12; i++) {
+		const card = layoutChildren[i];
+		card.addEventListener("click", function () {
+			//check the size of selected
+			if (selectedCards.length < 3) {
+				selectedCards.push(card);
+				if (selectedCards.length == 3) {
+					selectedCards.forEach((elem) => {
+						console.log(elem);
+					});
+				}
+			} else if (selectedCards.length == 3) {
+				alert("you have selected 3 cards already");
+			}
+		});
+	}
 	return indexes;
 }
+
+//event listener to shuffle cards
+
+const shuffleButton = document.querySelector(".shuffle-layout");
+shuffleButton.addEventListener("click", function () {
+	//
+	shuffleDeck();
+});
 
 // listener to catch cards being selectedCards.
 const submitSelectionButton = document.querySelector(".submit-selection");
 submitSelectionButton.addEventListener("click", function () {
-	// ### PLACE HOLDER
-	const selectedCards = shuffleDeck();
-	// ###
+	//check that the selected cards are at least of length 3
+	if (selectedCards.length < 3) {
+		alert("you do not have 3 cards selected");
+		return;
+	}
+
 	const fortuneReadingsDisplay = document.querySelector(".display-fortunes");
 	const selectionPageElement = document.querySelector("#selection-page");
 	const fortunePageElement = document.querySelector("#fortune-page");
@@ -34,9 +75,9 @@ submitSelectionButton.addEventListener("click", function () {
 	fortunePageElement.style.visibility = "visible";
 
 	selectedCards.forEach((element) => {
-		const newFortune = document.createElement("fortune-card");
-		newFortune.data = cards.tarot[element];
-		fortuneReadingsDisplay.appendChild(newFortune);
+		//const newFortune = document.createElement("fortune-card");
+		//newFortune.data = cards.tarot[element];
+		fortuneReadingsDisplay.appendChild(element);
 	});
 	/*
 	for (let i = 0; i < selectedCards.length; i = i + 1) {
@@ -144,10 +185,14 @@ class fortuneCard extends HTMLElement {
 
 		articleDOM.innerHTML = `
       <div>
-      <h3>${data["name"]}</h3>
+      <h3 class="cardName">${data["name"]}</h3>
       <img src = "/src/assets/card-scans/${imageName}">
       
       </div>`;
 	}
 }
 customElements.define("fortune-card", fortuneCard);
+
+window.onload = function () {
+	indexes = shuffleDeck();
+};

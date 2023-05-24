@@ -7,16 +7,14 @@ body {
 	visibility: visible;
 }
 
-#fortune-page{
+#fortune-page {
 	text-align: center;
 	visibility: hidden;
 	/* align-items: right; */
 	/* background-color: aliceblue; */
-	
 }
 
-
-.display-fortunes{
+.display-fortunes {
 	background-color: aliceblue;
 	display: flex;
 	flex-wrap: wrap;
@@ -25,7 +23,12 @@ body {
 	/* align-items: center; */
 	/* float: center; */
 	align-content: center;
-
-
 }
 
+.cards-to-select {
+	text-align: center;
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	grid-gap: 50px;
+	padding: 0px 50px 0px 50px;
+}
