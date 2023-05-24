@@ -4,4 +4,28 @@ body {
 
 #selection-page {
 	text-align: center;
+	visibility: visible;
 }
+
+#fortune-page{
+	text-align: center;
+	visibility: hidden;
+	/* align-items: right; */
+	/* background-color: aliceblue; */
+	
+}
+
+
+.display-fortunes{
+	background-color: aliceblue;
+	display: flex;
+	flex-wrap: wrap;
+	/* padding: 20px; */
+	/* overflow-wrap: normal; */
+	/* align-items: center; */
+	/* float: center; */
+	align-content: center;
+
+
+}
+
