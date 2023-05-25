@@ -1,72 +1,93 @@
 import { cards } from "./tarotCards.js";
 
+/**
+ * An array of indices referencing the shuffled cards displayed on screen
+ * @type {number[]}
+ */
 let indexes = [];
 
+/**
+ * An array of selected fortuneCard elements
+ * @type {HTMLElement[]}
+ */
 let selectedCards = [];
 
 const layout = document.getElementsByClassName("cards-to-select")[0];
 
 /**
- *
- * @returns array of 12 indexes which refer to 12 random cards in the deck
+ * Shuffles the deck and displays 12 cards for selection
  */
 function shuffleDeck() {
-	//const indexes = [];
+	console.log("hit");
 	selectedCards = [];
 	indexes = [];
 	while (indexes.length < 12) {
 		const randomIndex = Math.floor(Math.random() * 78);
 		if (!indexes.includes(randomIndex)) {
-			//add index to array
 			indexes.push(randomIndex);
 		}
 	}
-
 	layout.innerHTML = "";
-
-	indexes.forEach((elem) => {
-		const newFortune = document.createElement("fortune-card");
-		newFortune.data = cards.tarot[elem];
-		layout.appendChild(newFortune); //
-	});
-
-	const layoutChildren = layout.children;
-	for (let i = 0; i < 12; i++) {
-		const card = layoutChildren[i];
-		card.addEventListener("click", function () {
-			//check the size of selected
-			if (selectedCards.length < 3) {
-				selectedCards.push(card);
-				if (selectedCards.length == 3) {
-					selectedCards.forEach((elem) => {
-						console.log(elem);
-					});
-				}
-			} else if (selectedCards.length == 3) {
-				alert("you have selected 3 cards already");
-			}
-		});
-	}
-	return indexes;
+	displayShuffledCards();
 }
 
-//event listener to shuffle cards
+/**
+ * displays each of the 12 shuffled cards to the display
+ */
+function displayShuffledCards() {
+	indexes.forEach((index) => {
+		const newCard = document.createElement("fortune-card");
+		newCard.data = cards.tarot[index];
+		layout.appendChild(newCard);
+		addCardClickListener(newCard);
+	});
+}
 
-const shuffleButton = document.querySelector(".shuffle-layout");
-shuffleButton.addEventListener("click", function () {
-	//
+/**
+ * sets up an event listener for each fortuneCard
+ * @param {HTMLElement} card
+ */
+function addCardClickListener(card) {
+	card.addEventListener("click", function () {
+		if (selectedCards.includes(card)) {
+			alert("This card has already been selected");
+			return;
+		}
+		if (selectedCards.length < 3) {
+			selectedCards.push(card);
+			if (selectedCards.length === 3) {
+				selectedCards.forEach((elem) => {
+					console.log(elem);
+				});
+			}
+		} else {
+			alert("you have selected 3 cards already");
+		}
+	});
+}
+
+/**
+ * sets up an event listener for the shuffle button, shuffles the dislay on click
+ */
+document.querySelector(".shuffle-layout").addEventListener("click", () => {
 	shuffleDeck();
 });
 
-// listener to catch cards being selectedCards.
-const submitSelectionButton = document.querySelector(".submit-selection");
-submitSelectionButton.addEventListener("click", function () {
-	//check that the selected cards are at least of length 3
+/**
+ * sets up an event listener for the submit button, displays the 3 selected cards
+ */
+document.querySelector(".submit-selection").addEventListener("click", function () {
 	if (selectedCards.length < 3) {
 		alert("you do not have 3 cards selected");
 		return;
 	}
+	displayFortunePage();
+});
 
+/**
+ * removes the selection page, and makes the selected cards visible to user
+ */
+function displayFortunePage() {
 	const fortuneReadingsDisplay = document.querySelector(".display-fortunes");
 	const selectionPageElement = document.querySelector("#selection-page");
 	const fortunePageElement = document.querySelector("#fortune-page");
@@ -74,32 +95,20 @@ submitSelectionButton.addEventListener("click", function () {
 	selectionPageElement.remove();
 	fortunePageElement.style.visibility = "visible";
 
-	selectedCards.forEach((element) => {
-		//const newFortune = document.createElement("fortune-card");
-		//newFortune.data = cards.tarot[element];
-		fortuneReadingsDisplay.appendChild(element);
+	selectedCards.forEach((card) => {
+		fortuneReadingsDisplay.appendChild(card);
 	});
-	/*
-	for (let i = 0; i < selectedCards.length; i = i + 1) {
-		const newFortune = document.createElement("fortune-card");
-		newFortune.data = cards.tarot[selectedCards[i]];
+}
 
-		fortuneReadingsDisplay.appendChild(newFortune);
-	}
-  */
-});
-
+/**
+ * Fortune card custom HTML element
+ */
 class fortuneCard extends HTMLElement {
-	// Called once when document.createElement('fortune-card') is called, or
-	// the element is written into the DOM directly as <recipe-card>
 	constructor() {
-		super(); // Inheret everything from HTMLElement
+		super();
 		this.attachShadow({ mode: "open" });
-		// A2. TODO - Create an <article> element - This will hold our markup once our data is set
 		const articleElement = document.createElement("article");
-		// A3. TODO - Create a style element - This will hold all of the styles for the Web Component
 		const styleElement = document.createElement("style");
-		// A4. TODO - Insert all of the styles from cardTemplate.html into the <style> element you just made
 		styleElement.textContent = `
       * {
         font-family: sans-serif;
@@ -193,6 +202,7 @@ class fortuneCard extends HTMLElement {
 }
 customElements.define("fortune-card", fortuneCard);
 
-window.onload = function () {
-	indexes = shuffleDeck();
-};
+/**
+ * Calls shuffleDeck on window load in order to setup the initial layout
+ */
+window.onload = shuffleDeck();
