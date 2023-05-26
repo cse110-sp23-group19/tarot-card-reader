@@ -137,7 +137,7 @@ class backfaceCard extends HTMLElement {
 			}
 		</style>
 		<div id="card">
-			<img src = "../assets/card-scans/backface-card.jpg">
+			<img src = "/src/assets/card-scans/backface-card.jpg">
 		</div>`;
 
 
@@ -262,13 +262,12 @@ class fortuneCard extends HTMLElement {
 
 		articleDOM.innerHTML = `
       <div>
+
       <h3 class="card-title">${data["name"]}</h3>
 	  <br><br>
       <img src = "/src/assets/card-scans/${imageName}">
 	  <p> Your interpretation: </p>
 	  <p>${data["interpretation"]} </p>
-
-
       </div>`;
 	}
 }
