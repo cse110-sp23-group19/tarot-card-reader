@@ -138,7 +138,7 @@ class backfaceCard extends HTMLElement {
 			}
 		</style>
 		<div id="card">
-			<img src = "/src/assets/card-scans/backface-card.jpg">
+			<img src = "./src/assets/card-scans/backface-card.jpg">
 		</div>`;
 
 		// Add event listener for the click
@@ -254,7 +254,7 @@ class fortuneCard extends HTMLElement {
 		articleDOM.innerHTML = `
       <div>
       <h3 class="cardName">${data["name"]}</h3>
-      <img src = "/src/assets/card-scans/${imageName}">
+      <img src = "./src/assets/card-scans/${imageName}">
       
       </div>`;
 	}
