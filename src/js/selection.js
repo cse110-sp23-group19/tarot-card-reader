@@ -53,12 +53,12 @@ function displayShuffledCards() {
  */
 function addCardClickListener(card) {
 	card.addEventListener("click", function () {
-		if (selectedCards.includes(card)) {
+		if (selectedCards.includes(card.index)) {
 			alert("This card has already been selected");
 			return;
 		}
 		if (selectedCards.length < 3) {
-			selectedCards.push(card);
+			selectedCards.push(card.index);
 			if (selectedCards.length === 3) {
 				selectedCards.forEach((elem) => {
 					console.log(elem);
@@ -99,8 +99,10 @@ function displayFortunePage() {
 	selectionPageElement.remove();
 	fortunePageElement.style.visibility = "visible";
 
-	selectedCards.forEach((card) => {
-		fortuneReadingsDisplay.appendChild(card);
+	selectedCards.forEach((cardIndex) => {
+		const newCard = document.createElement("fortune-card");
+		newCard.data = cards.tarot[cardIndex];
+		fortuneReadingsDisplay.appendChild(newCard);
 	});
 }
 
