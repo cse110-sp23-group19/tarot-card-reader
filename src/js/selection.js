@@ -36,10 +36,14 @@ function shuffleDeck() {
  */
 function displayShuffledCards() {
 	indexes.forEach((index) => {
-		const newCard = document.createElement("fortune-card");
-		newCard.data = cards.tarot[index];
-		layout.appendChild(newCard);
-		addCardClickListener(newCard);
+		// TODO: instead of displaying the actual fortuneCard, display the back of the card
+		const newBackfaceCard = document.createElement("backface-card");
+		newBackfaceCard.index = index;
+
+		//const newCard = document.createElement("fortune-card");
+		//newCard.data = cards.tarot[index];
+		layout.appendChild(newBackfaceCard);
+		addCardClickListener(newBackfaceCard);
 	});
 }
 
@@ -98,6 +102,39 @@ function displayFortunePage() {
 	selectedCards.forEach((card) => {
 		fortuneReadingsDisplay.appendChild(card);
 	});
+}
+
+class backfaceCard extends HTMLElement {
+	constructor() {
+		super();
+		this._index = null;
+		this.attachShadow({ mode: "open" });
+	}
+	connectedCallback() {
+		this.shadowRoot.innerHTML = `
+		<style>
+			div {
+				width: 200px;
+				height: 300px;
+			}
+
+			img {
+				width: 100%;
+				height: 100%
+			}
+		</style>
+		<div>
+			<img src = "/src/assets/card-scans/backface-card.jpg">
+		</div>`;
+	}
+
+	get index() {
+		return this._index;
+	}
+
+	set index(index) {
+		this._index = index;
+	}
 }
 
 /**
@@ -200,6 +237,8 @@ class fortuneCard extends HTMLElement {
       </div>`;
 	}
 }
+
+customElements.define("backface-card", backfaceCard);
 customElements.define("fortune-card", fortuneCard);
 
 /**
