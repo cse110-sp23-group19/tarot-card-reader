@@ -4,19 +4,23 @@ on: [push]
 name: Generate docs
 jobs:
     build:
+      name: jsDocs
       runs-on: ubuntu-latest
       steps:
-        - name: Checkout code
-          uses: actions/checkout@v2
-        
         - name: Delete old Docs
           run: rm -r ./js/documentation/*
 
-        - name: Create new Docs
-          uses: andstor/jsdoc-action@v1
+        - uses: actions/checkout@v1
+        - name: Use Node.js
+          uses: actions/setup-node@v2
           with:
-            source_dir: ./src
-            output_dir: ./js/documentation
-            config_file: conf.json
-            template: minami
-            front_page: ./js/README.md
+            node-version: "19" # specify the node version you want
+        
+        - name: Install jsdocs
+          run: npm install -g jsdocs
+
+        - name: Run jsdocs
+          run: |
+            jsdoc ./js/landing.js
+            jsdoc ./js/selection.js
+            jsdoc ./js/tarotCards.js
