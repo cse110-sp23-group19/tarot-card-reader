@@ -1,7 +1,6 @@
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
-const { shuffleDeck, displayShuffledCards, addCardClickListener } =
-	require("../src/js/selection").default.default; // assuming you have exported these functions
+const { shuffleDeck, displayShuffledCards } = require("../src/js/selection").default.default; // assuming you have exported these functions
 
 describe("tarot card fortune telling tests", () => {
 	beforeAll(() => {
@@ -12,13 +11,14 @@ describe("tarot card fortune telling tests", () => {
 	});
 
 	test("shuffleDeck should generate 12 unique indexes", () => {
-		shuffleDeck();
+		const indexes = shuffleDeck();
 		const indexSet = new Set(indexes);
 		expect(indexSet.size).toEqual(12);
 	});
 
 	test("displayShuffledCards should add 12 cards to the layout", () => {
 		displayShuffledCards();
+		const layout = global.document.querySelector("layout");
 		expect(layout.childNodes.length).toEqual(12);
 	});
 });
