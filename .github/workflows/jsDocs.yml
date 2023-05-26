@@ -6,6 +6,8 @@ jobs:
     build:
       name: jsDocs
       runs-on: ubuntu-latest
+      env:
+        prepo: ${{github.repository}}
       steps:
         - name: Delete old Docs
           run: rm -r ./src/js/documentation/*
