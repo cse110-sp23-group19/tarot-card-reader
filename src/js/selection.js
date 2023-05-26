@@ -1,7 +1,3 @@
-// window.addEventListener('DOMContentLoaded', init);
-
-// function init() {
-//   }
 import { cards } from "./tarotCards.js";
 
 /**
@@ -23,9 +19,7 @@ function shuffleDeck() {
 // listener to catch cards being selectedCards.
 const submitSelectionButton = document.querySelector(".submit-selection");
 submitSelectionButton.addEventListener("click", function () {
-	// ### PLACE HOLDER
 	const selectedCards = shuffleDeck();
-	// ###
 	const fortuneReadingsDisplay = document.querySelector(".display-fortunes");
 	const selectionPageElement = document.querySelector("#selection-page");
 	const fortunePageElement = document.querySelector("#fortune-page");
@@ -38,14 +32,7 @@ submitSelectionButton.addEventListener("click", function () {
 		newFortune.data = cards.tarot[element];
 		fortuneReadingsDisplay.appendChild(newFortune);
 	});
-	/*
-	for (let i = 0; i < selectedCards.length; i = i + 1) {
-		const newFortune = document.createElement("fortune-card");
-		newFortune.data = cards.tarot[selectedCards[i]];
 
-		fortuneReadingsDisplay.appendChild(newFortune);
-	}
-  */
 });
 
 class fortuneCard extends HTMLElement {
@@ -60,64 +47,76 @@ class fortuneCard extends HTMLElement {
 		const styleElement = document.createElement("style");
 		// A4. TODO - Insert all of the styles from cardTemplate.html into the <style> element you just made
 		styleElement.textContent = `
-      * {
-        font-family: sans-serif;
-        margin: 0;
-        padding: 0px;
-        // align-items: center;
-        // display: grid;
-      }
+      	* {
+			font-family: sans-serif;
+			margin: 0;
+			padding: 0px;
+
+		}
     
-      a {
-        text-decoration: none;
-      }
-    
-      a:hover {
-        text-decoration: underline;
-      }
-      // div{
-      //   background-color:  aqua;
-      // }
-    
-      article {
-        align-items: center;
-        border: 1px solid rgb(223, 225, 229);
-        border-radius: 8px;
-        display: grid;
-        grid-template-rows: 118px 56px 14px 18px 15px 36px;
-        height: auto;
-        row-gap: 5px;
-        padding: 0 16px 16px 16px;
-        width: 300px;
-        background-color: #eed9c4;
-        margin: 20px;
-        grid-auto-flow: row;
-      }
-      h3{
-        padding-top: 20px;
-        // display: inline;
-        grid-row-start: 1;
+		a {
+			text-decoration: none;
+		}
+		
+		a:hover {
+			text-decoration: underline;
+		}
+		div {
+			display:grid;
+			background-color: black;
+			border: 1px solid rgb(223, 225, 229);
+			border-radius: 8px;
+			padding: 0px 16px 16px 16px;
+			
+		}
+		.card-title{
+
+			font-size: 25px;
+			padding: 10px 0px 10px 0px;
+			font-family: "Nanum Myeongjo";
+		}
+		p{
+			font-family: "Nanum Myeongjo";
+		}
+
+		
+		article {
+			align-items: center;
+			border: 1px solid rgb(223, 225, 229);
+			border-radius: 8px;
+			border-color: black;
+			grid-template-rows: 118px 56px 14px 18px 15px 36px;
+			height: auto;
+			row-gap: 5px;
+			padding: 16px 16px 16px 16px;
+			width: 350px;
+			background-color: black;
+			margin: 20px;
+			grid-auto-flow: row;
+			box-shadow:  0 0 0 2px rgb(255, 255, 255),
+			0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+		}
+		
+		h3{
+			padding-top: 20px;
+			grid-row-start: 1;
+			
 
 
-      }
+		}
 
-      img{
-        height: 200px;
-        grid-row-start:2;
+		img{
+			height: 400px;
+			grid-row-start:2;
+			margin: auto;
 
-      }
-      `;
+		}
+		`;
 		this.shadowRoot.appendChild(styleElement);
 		this.shadowRoot.append(articleElement);
 	}
 
 	/**
-	 * Called when the .data property is set on this element.
-	 *
-	 * For Example:
-	 * let recipeCard = document.createElement('recipe-card'); // Calls constructor()
-	 * recipeCard.data = { foo: 'bar' } // Calls set data({ foo: 'bar' })
-	 *
 	 * @param {Object} data - The data to pass into the <recipe-card>, must be of the
 	 *                        following format:
 	 *                        {
@@ -135,18 +134,19 @@ class fortuneCard extends HTMLElement {
 	set data(data) {
 		// If nothing was passed in, return
 		if (!data) return;
-		// console.log("data", data);
-		// A6. TODO - Select the <article> we added to the Shadow DOM in the constructor
 		const articleDOM = this.shadowRoot.querySelector("article");
 
 		let imageName = data["img"];
-		// const imageName = str[0] + numbers
 
 		articleDOM.innerHTML = `
       <div>
-      <h3>${data["name"]}</h3>
+      <h3 class="card-title">${data["name"]}</h3>
+	  <br><br>
       <img src = "/src/assets/card-scans/${imageName}">
-      
+	  <p> Your interpretation: </p>
+	  <p>${data["interpretation"]} </p>
+
+
       </div>`;
 	}
 }
