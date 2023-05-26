@@ -8,7 +8,7 @@ jobs:
       runs-on: ubuntu-latest
       steps:
         - name: Delete old Docs
-          run: rm -r ./js/documentation/*
+          run: rm -r ./src/js/documentation/*
 
         - uses: actions/checkout@v1
         - name: Use Node.js
@@ -21,6 +21,6 @@ jobs:
 
         - name: Run jsdocs
           run: |
-            jsdoc ./js/landing.js
-            jsdoc ./js/selection.js
-            jsdoc ./js/tarotCards.js
+            jsdoc ./src/js/landing.js
+            jsdoc ./src/js/selection.js
+            jsdoc ./src/js/tarotCards.js
