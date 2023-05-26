@@ -10,8 +10,19 @@
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
+	"jest": {
+		"setupFilesAfterEnv": [
+			"./jest.setup.js"
+		],
+		"testEnvironment": "jsdom"
+	},
 	"devDependencies": {
 		"eslint": "^8.41.0",
-		"jest": "^29.5.0"
+		"jest": "^29.5.0",
+		"jest-environment-jsdom": "^29.5.0",
+		"jsdom": "^22.0.0"
+	},
+	"dependencies": {
+		"util": "^0.12.5"
 	}
 }
