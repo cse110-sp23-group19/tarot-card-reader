@@ -121,15 +121,25 @@ class backfaceCard extends HTMLElement {
 				width: 200px;
 				height: 300px;
 			}
-
 			img {
 				width: 100%;
 				height: 100%
 			}
+			div:hover {
+				box-shadow: 0px 0px 10px 5px rgba(128, 0, 128, 0.7); /* Purple glow on hover */
+			}
+			div.goldGlow {
+				box-shadow: 0px 0px 10px 5px rgba(255, 215, 0, 0.7); /* Gold glow after click */
+			}
 		</style>
-		<div>
+		<div id="card">
 			<img src = "/src/assets/card-scans/backface-card.jpg">
 		</div>`;
+
+		// Add event listener for the click
+		this.shadowRoot.querySelector("#card").addEventListener("click", () => {
+			this.shadowRoot.querySelector("#card").classList.add("goldGlow");
+		});
 	}
 	get index() {
 		return this._index;
