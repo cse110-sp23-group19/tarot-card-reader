@@ -1,12 +1,9 @@
 #Update documentation using jsDocs
-on:
-    push:
-      branches:
-      - master
+on: [push]
 
-name: Generate does
+name: Generate docs
 jobs:
-    deploy:
+    build:
       runs-on: ubuntu-latest
       steps:
         - name: Checkout code
