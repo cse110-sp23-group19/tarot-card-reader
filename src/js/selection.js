@@ -75,6 +75,7 @@ function addCardClickListener(card) {
  */
 document.querySelector(".shuffle-layout").addEventListener("click", () => {
 	shuffleDeck();
+	backfaceCard.goldGlowCount = 0;
 });
 
 /**
@@ -107,9 +108,13 @@ function displayFortunePage() {
 }
 
 class backfaceCard extends HTMLElement {
+	static goldGlowCount = 0;
+	static maxGoldGlow = 3;
+
 	constructor() {
 		super();
 		this._index = null;
+		this._glowing = false;
 		this.attachShadow({ mode: "open" });
 	}
 	connectedCallback() {
@@ -136,7 +141,11 @@ class backfaceCard extends HTMLElement {
 
 		// Add event listener for the click
 		this.shadowRoot.querySelector("#card").addEventListener("click", () => {
-			this.shadowRoot.querySelector("#card").classList.add("goldGlow");
+			if (!this._glowing && backfaceCard.goldGlowCount < backfaceCard.maxGoldGlow) {
+				this.shadowRoot.querySelector("#card").classList.add("goldGlow");
+				this._glowing = true; // Update instance variable
+				backfaceCard.goldGlowCount++; // Increase count
+			}
 		});
 	}
 
