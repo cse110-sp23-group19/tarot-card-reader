@@ -1,9 +1,8 @@
-
 body {
 	font-family: Arial, Helvetica, sans-serif;
-	background-image: url("/src/assets/sparkling-night-background.gif");
-	height:100%;
-    width:100%;
+	background-image: url("./assets/sparkling-night-background.gif");
+	height: 100%;
+	width: 100%;
 }
 
 #selection-page {
@@ -17,20 +16,17 @@ body {
 	visibility: hidden;
 
 	color: white;
-
 }
-h2{
+h2 {
 	font-family: "MedievalSharp";
 	font-size: 40px;
 }
 
-h4{
-	font-family:  "MedievalSharp";
+h4 {
+	font-family: "MedievalSharp";
 	font-weight: 5px;
-
 }
 .display-fortunes {
-
 	display: flex;
 	flex-wrap: wrap;
 	align-content: center;
@@ -67,20 +63,15 @@ button {
 	padding-bottom: 15px;
 }
 
-
-
-
-button{
+button {
 	background-color: white;
 	font-size: 16px;
-
 
 	padding: 10px 20px;
 	border: none;
 	border-radius: 30px;
 	font-size: 16px;
 	font-weight: bold;
-
 
 	cursor: pointer;
 	color: #000000;

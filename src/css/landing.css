@@ -1,11 +1,11 @@
 body {
 	font-family: Arial, Helvetica, sans-serif;
-	background-image: url("/src/assets/sparkling-night-background.gif");
-	height:100%;
-    width:100%;
+	background-image: url("./assets/sparkling-night-background.gif");
+	height: 100%;
+	width: 100%;
 }
 
-h2{
+h2 {
 	color: white;
 }
 
@@ -89,8 +89,6 @@ button:hover::before {
 	font-size: 23px;
 }
 
-
-
-img{
-	filter: invert()
+img {
+	filter: invert();
 }
