@@ -5,7 +5,7 @@
 	"main": "index.js",
 	"scripts": {
 		"test": "jest",
-		"eslint:github-action": "node ./node_modules/eslint/bin/eslint . --ignore-path .gitignore --max-warnings 0"
+		"eslint:github-action": "node ./node_modules/eslint/bin/eslint . --ignore-path .eslintignore --max-warnings 0"
 	},
 	"keywords": [],
 	"author": "",

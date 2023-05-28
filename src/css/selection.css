@@ -1,27 +1,38 @@
+
 body {
 	font-family: Arial, Helvetica, sans-serif;
+	background-image: url("/src/assets/sparkling-night-background.gif");
+	height:100%;
+    width:100%;
 }
 
 #selection-page {
 	text-align: center;
 	visibility: visible;
+	color: white;
 }
 
 #fortune-page {
 	text-align: center;
 	visibility: hidden;
-	/* align-items: right; */
-	/* background-color: aliceblue; */
+
+	color: white;
+
+}
+h2{
+	font-family: "MedievalSharp";
+	font-size: 40px;
 }
 
+h4{
+	font-family:  "MedievalSharp";
+	font-weight: 5px;
+
+}
 .display-fortunes {
-	background-color: aliceblue;
+
 	display: flex;
 	flex-wrap: wrap;
-	/* padding: 20px; */
-	/* overflow-wrap: normal; */
-	/* align-items: center; */
-	/* float: center; */
 	align-content: center;
 }
 
@@ -56,8 +67,32 @@ button {
 	padding-bottom: 15px;
 }
 
-button:hover {
-	background-color: #d8c0ff;
+
+
+
+button{
+	background-color: white;
+	font-size: 16px;
+
+
+	padding: 10px 20px;
+	border: none;
+	border-radius: 30px;
+	font-size: 16px;
+	font-weight: bold;
+
+
+	cursor: pointer;
+	color: #000000;
+	box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+	transition: background-color 0.3s ease;
+	position: relative;
+	overflow: hidden;
+	font-family: "Nanum Myeongjo";
+
+	padding-top: 15px;
+	padding-bottom: 15px;
+	margin: 15px;
 }
 
 button::before {
