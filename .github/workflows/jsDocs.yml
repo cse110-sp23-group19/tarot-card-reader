@@ -1,28 +1,25 @@
 #Update documentation using jsDocs
-on: [push]
+on: push
 
 name: Generate docs
 jobs:
     build:
       name: jsDocs
       runs-on: ubuntu-latest
-      env:
-        prepo: ${{github.repository}}
       steps:
-        - name: Delete old Docs
-          run: rm -r ./src/js/documentation/*
-
         - uses: actions/checkout@v1
+
         - name: Use Node.js
           uses: actions/setup-node@v2
           with:
-            node-version: "19" # specify the node version you want
-        
-        - name: Install jsdocs
-          run: npm install -g jsdocs
+            node-version: "19"
 
-        - name: Run jsdocs
-          run: |
-            jsdoc ./src/js/landing.js
-            jsdoc ./src/js/selection.js
-            jsdoc ./src/js/tarotCards.js
+        - name: Delete old Docs
+          run: rm -rf src/js/documentation/*
+
+        - name: Build
+          uses: andstor/jsdoc-action@v1
+          with:
+            source_dir: ./src/js
+            recurse: true
+            output_dir: ./src/js/documentation
