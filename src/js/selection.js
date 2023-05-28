@@ -134,7 +134,7 @@ class backfaceCard extends HTMLElement {
 			}
 		</style>
 		<div id="card">
-			<img src = "/src/assets/card-scans/backface-card.jpg">
+			<img src = "./assets/card-scans/backface-card.jpg">
 		</div>`;
 
 		// Add event listener for the click
