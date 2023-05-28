@@ -30,8 +30,6 @@ function shuffleDeck() {
 	displayShuffledCards();
 }
 
-
-
 /**
  * displays each of the 12 shuffled cards to the display
  */
@@ -103,7 +101,6 @@ function displayFortunePage() {
 		newCard.data = cards.tarot[cardIndex];
 		fortuneReadingsDisplay.appendChild(newCard);
 	});
-
 }
 /**
  * A class to represent the back of the cards
@@ -139,7 +136,6 @@ class backfaceCard extends HTMLElement {
 		<div id="card">
 			<img src = "/src/assets/card-scans/backface-card.jpg">
 		</div>`;
-
 
 		// Add event listener for the click
 		this.shadowRoot.querySelector("#card").addEventListener("click", () => {
@@ -265,7 +261,7 @@ class fortuneCard extends HTMLElement {
 
       <h3 class="card-title">${data["name"]}</h3>
 	  <br><br>
-      <img src = "/src/assets/card-scans/${imageName}">
+      <img src = "./assets/card-scans/${imageName}">
 	  <p> Your interpretation: </p>
 	  <p>${data["interpretation"]} </p>
       </div>`;
