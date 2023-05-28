@@ -22,6 +22,6 @@ jobs:
 
         - name: Run jsdocs
           run: |
-            jsdoc src/js/landing.js -d src/js/documentation
-            jsdoc src/js/selection.js -d src/js/documentation
-            jsdoc src/js/tarotCards.js -d src/js/documentation
+            npm run jsdoc src/js/landing.js -d src/js/documentation
+            npm run jsdoc src/js/selection.js -d src/js/documentation
+            npm run jsdoc src/js/tarotCards.js -d src/js/documentation
