@@ -16,12 +16,10 @@ jobs:
 
         - name: Delete old Docs
           run: rm -rf src/js/documentation/*
-        
-        - name: Install jsdocs
-          run: npm install -g jsdocs
 
-        - name: Run jsdocs
-          run: |
-            npm run jsdoc src/js/landing.js -d src/js/documentation
-            npm run jsdoc src/js/selection.js -d src/js/documentation
-            npm run jsdoc src/js/tarotCards.js -d src/js/documentation
+        - name: Build
+          uses: andstor/jsdoc-action@v1
+          with:
+            source_dir: ./src/js
+            recurse: true
+            output_dir: ./src/js/documentation
