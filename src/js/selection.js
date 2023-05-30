@@ -45,6 +45,10 @@ function displayShuffledCards() {
 
 /**
  * sets up an event listener for each fortuneCard
+ * If the card was "clicked", then it gets added to our array of selected cards
+ * Before we can add, we must check if it was already selected. Or, if 3 cards
+ * have already been selected, then the card will not be added. Prompts are shown
+ * on screen that indicate these different events
  * @param {HTMLElement} card
  */
 function addCardClickListener(card) {
