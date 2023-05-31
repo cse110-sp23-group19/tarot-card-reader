@@ -10,6 +10,7 @@ Here is an example output:
 <img width="293" alt="Screen Shot 2023-05-24 at 12 36 36 PM" src="https://github.com/cse110-sp23-group19/tarot-card-reader/assets/34909983/1d15e57f-36aa-4106-84ee-cc8dcf73f230">
 
 ## Code Climate
+[![Test Coverage](https://api.codeclimate.com/v1/badges/05aa89d1b29169024899/test_coverage)](https://codeclimate.com/github/cse110-sp23-group19/tarot-card-reader/test_coverage)
 Code CLimate has been added to our repo and the analysis is :
 ![Screenshot from 2023-05-24 12-28-55](https://github.com/cse110-sp23-group19/tarot-card-reader/assets/83413253/801297b9-509e-4fcb-8c1f-d7ee4a0cd6a3)
 
