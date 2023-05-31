@@ -18,6 +18,9 @@ const layout = document.getElementsByClassName("cards-to-select")[0];
  * Shuffles the deck and displays 12 cards for selection
  */
 function shuffleDeck() {
+	if (selectedCards.length != 0){
+		return;
+	}
 	selectedCards = [];
 	indexes = [];
 	while (indexes.length < 12) {
@@ -174,6 +177,7 @@ class fortuneCard extends HTMLElement {
 			margin: 0;
 			padding: 0px;
 
+
 		}
     
 		a {
@@ -189,6 +193,7 @@ class fortuneCard extends HTMLElement {
 			border: 1px solid rgb(223, 225, 229);
 			border-radius: 8px;
 			padding: 0px 16px 16px 16px;
+			// height: 100%;
 			
 		}
 		.card-title{
