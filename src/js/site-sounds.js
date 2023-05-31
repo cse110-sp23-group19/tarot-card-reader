@@ -44,7 +44,7 @@ playButton.addEventListener("click", () => {
 	toggleMusic();
 });
 
-window.onload = (event) => {
+window.onload = () => {
 	music = document.getElementById("bg-music");
 	//set music time to what is in local storate
 	music.currentTime = parseInt(localStorage.getItem("time"));
