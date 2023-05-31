@@ -54,6 +54,7 @@ function displayShuffledCards() {
  * on screen that indicate these different events
  * @param {HTMLElement} card
  */
+let selectSound = document.getElementById("click-select");
 function addCardClickListener(card) {
 	card.addEventListener("click", function () {
 		if (selectedCards.includes(card.index)) {
@@ -62,11 +63,7 @@ function addCardClickListener(card) {
 		}
 		if (selectedCards.length < 3) {
 			selectedCards.push(card.index);
-			if (selectedCards.length === 3) {
-				selectedCards.forEach((elem) => {
-					console.log(elem);
-				});
-			}
+			selectSound.play();
 		} else {
 			alert("you have selected 3 cards already");
 		}
@@ -74,21 +71,34 @@ function addCardClickListener(card) {
 }
 
 /**
- * sets up an event listener for the shuffle button, shuffles the dislay on click
+ * sets up an event listener for the shuffle button, shuffles the dislay on click.
+ * Also, once the user clicks the shuffle button, a card shuffling sound will play
  */
+let hoverSounds = [
+	document.getElementById("hover-sound-1"),
+	document.getElementById("hover-sound-2"),
+	document.getElementById("hover-sound-3"),
+	document.getElementById("hover-sound-4"),
+	document.getElementById("hover-sound-5"),
+	document.getElementById("hover-sound-6"),
+];
 document.querySelector(".shuffle-layout").addEventListener("click", () => {
 	shuffleDeck();
 	backfaceCard.goldGlowCount = 0;
+	let randomSound = hoverSounds[Math.floor(Math.random() * hoverSounds.length)];
+	randomSound.play();
 });
 
 /**
  * sets up an event listener for the submit button, displays the 3 selected cards
  */
+let submitSound = document.getElementById("submit-sound");
 document.querySelector(".submit-selection").addEventListener("click", function () {
 	if (selectedCards.length < 3) {
 		alert("you do not have 3 cards selected");
 		return;
 	}
+	submitSound.play();
 	displayFortunePage();
 });
 
