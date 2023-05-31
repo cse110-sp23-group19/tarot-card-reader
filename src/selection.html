@@ -9,20 +9,22 @@
 
 		<!-- Main Stylesheet & Scripts -->
 		<link rel="stylesheet" href="./css/selection.css" />
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Didact+Gothic">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=MedievalSharp">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Yusei+Magic">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Didact+Gothic" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=MedievalSharp" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Yusei+Magic" />
 
-
-		
 		<script src="./js/selection.js" type="module"></script>
 		<script src="./js/tarotCards.js" type="module"></script>
+		<script src="./js/site-sounds.js" type="module"></script>
 	</head>
 
 	<body>
+		<audio id="bg-music" src="assets/sound-clips/background-music.mp3" autoplay loop hidden></audio>
+		<button id="mute-button">Toggle Background Music</button>
 		<main>
+			<audio id="submit-sound" src="assets/sound-clips/submit-sound.mp3" preload="auto"></audio>
 			<section id="selection-page">
 				<header>
 					<h2>Tarot Card Reading</h2>
@@ -32,6 +34,36 @@
 						<!-- this is where the 8 shuffled cards, face down will go -->
 					</div>
 					<button class="submit-selection">Submit</button>
+					<audio
+						id="hover-sound-6"
+						src="assets/sound-clips/shuffling-cards-6.mp3"
+						preload="auto"
+					></audio>
+					<audio
+						id="hover-sound-5"
+						src="assets/sound-clips/shuffling-cards-5.mp3"
+						preload="auto"
+					></audio>
+					<audio
+						id="hover-sound-4"
+						src="assets/sound-clips/shuffling-cards-4.mp3"
+						preload="auto"
+					></audio>
+					<audio
+						id="hover-sound-3"
+						src="assets/sound-clips/shuffling-cards-3.mp3"
+						preload="auto"
+					></audio>
+					<audio
+						id="hover-sound-2"
+						src="assets/sound-clips/shuffling-cards-2.mp3"
+						preload="auto"
+					></audio>
+					<audio
+						id="hover-sound-1"
+						src="assets/sound-clips/shuffling-cards-1.mp3"
+						preload="auto"
+					></audio>
 				</header>
 			</section>
 			<section id="fortune-page">
@@ -40,6 +72,11 @@
 					<h4>Here are your fortunes:</h4>
 					<div class="display-fortunes">
 						<!-- this is where the fortune readings go -->
+						<audio
+							id="click-select"
+							src="assets/sound-clips/click-select.mp3"
+							preload="auto"
+						></audio>
 					</div>
 				</header>
 			</section>

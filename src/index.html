@@ -10,10 +10,19 @@
 		<!-- Main Stylesheet & Scripts -->
 		<link rel="stylesheet" href="./css/landing.css" />
 		<script src="./js/landing.js" type="module"></script>
+		<script src="./js/site-sounds.js" type="module"></script>
 	</head>
 
 	<body>
 		<main>
+			<audio
+				id="bg-music"
+				src="assets/sound-clips/background-music.mp3"
+				autoplay
+				loop
+				hidden
+			></audio>
+			<button id="mute-button">Toggle Background Music</button>
 			<section id="landing-page">
 				<header>
 					<div class="tarot-logo-container">
