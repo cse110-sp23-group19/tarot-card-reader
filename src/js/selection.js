@@ -74,6 +74,9 @@ function addCardClickListener(card) {
  * sets up an event listener for the shuffle button, shuffles the dislay on click
  */
 document.querySelector(".shuffle-layout").addEventListener("click", () => {
+	if (selectedCards.length != 0){
+		return;
+	}
 	shuffleDeck();
 	backfaceCard.goldGlowCount = 0;
 });
