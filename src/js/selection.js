@@ -37,13 +37,17 @@ function shuffleDeck() {
  * displays each of the 12 shuffled cards to the display
  */
 function displayShuffledCards() {
-	indexes.forEach((index) => {
-		const newBackfaceCard = document.createElement("backface-card");
-		newBackfaceCard.index = index;
+    indexes.forEach((index) => {
+        const newBackfaceCard = document.createElement("backface-card");
+        newBackfaceCard.index = index;
+        newBackfaceCard.classList.add("shuffle"); // Add shuffle animation
+        setTimeout(() => {
+            newBackfaceCard.classList.remove("shuffle"); // Remove the class after the animation
+        }, 500);
 
-		layout.appendChild(newBackfaceCard);
-		addCardClickListener(newBackfaceCard);
-	});
+        layout.appendChild(newBackfaceCard);
+        addCardClickListener(newBackfaceCard);
+    });
 }
 
 /**
