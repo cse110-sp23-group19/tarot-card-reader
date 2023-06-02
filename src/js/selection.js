@@ -87,6 +87,9 @@ let hoverSounds = [
 	document.getElementById("hover-sound-6"),
 ];
 document.querySelector(".shuffle-layout").addEventListener("click", () => {
+	if (selectedCards.length != 0){
+		return;
+	}
 	shuffleDeck();
 	backfaceCard.goldGlowCount = 0;
 	let randomSound = hoverSounds[Math.floor(Math.random() * hoverSounds.length)];
