@@ -70,6 +70,7 @@ function addCardClickListener(card) {
 			selectSound.play();
 		} else {
 			alert("you have selected 3 cards already");
+			backfaceCard.goldGlowCount = 3;
 		}
 	});
 }
