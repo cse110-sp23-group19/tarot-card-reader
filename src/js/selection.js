@@ -19,7 +19,7 @@ document.getElementById("remove").onclick = function() {
     document.getElementById("landing-page").remove();
 	document.getElementById("selection-page").classList.remove("hidden");
 	shuffleDeck();
-}
+};
 
 /**
  * Shuffles the deck and displays 12 cards for selection
