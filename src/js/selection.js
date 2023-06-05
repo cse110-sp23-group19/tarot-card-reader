@@ -1,5 +1,7 @@
 import { cards } from "./tarotCards.js";
 
+module.exports = { shuffleDeck };
+
 /**
  * An array of indices referencing the shuffled cards displayed on screen
  * @type {number[]}
@@ -30,6 +32,7 @@ function shuffleDeck() {
 	if(layout)
 		layout.innerHTML = "";
 	displayShuffledCards();
+	return indexes;
 }
 
 /**
