@@ -14,13 +14,23 @@
 		"setupFilesAfterEnv": [
 			"./jest.setup.js"
 		],
-		"testEnvironment": "jsdom"
+		"testEnvironment": "jsdom",
+		"preset": "jest-puppeteer",
+		"verbose": true,
+		"transform": {
+			"^.+\\.[t|j]sx?$": "babel-jest"
+		}
 	},
 	"devDependencies": {
+		"@babel/core": "^7.22.1",
+		"@babel/preset-env": "^7.22.4",
+		"babel-jest": "^29.5.0",
 		"eslint": "^8.41.0",
 		"jest": "^29.5.0",
 		"jest-environment-jsdom": "^29.5.0",
-		"jsdom": "^22.0.0"
+		"jest-puppeteer": "^9.0.0",
+		"jsdom": "^22.0.0",
+		"puppeteer": "^20.5.0"
 	},
 	"dependencies": {
 		"util": "^0.12.5"

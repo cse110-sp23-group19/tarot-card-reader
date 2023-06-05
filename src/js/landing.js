@@ -1,7 +1,6 @@
 /**
  * reference to the html element that holds the quote
  */
-const quoteElement = document.getElementById("randomQuote");
 
 /**
  * array with different quotes
@@ -19,9 +18,13 @@ const quotes = [
 /**
  * Function to generate a random quote
  */
+
+/*
 function getRandomQuote() {
+	const quoteElement = document.getElementById("randomQuote");
 	const randomIndex = Math.floor(Math.random() * quotes.length);
 	quoteElement.textContent = quotes[randomIndex];
 }
 
 getRandomQuote();
+*/

@@ -13,6 +13,7 @@ let indexes = [];
 let selectedCards = [];
 
 const layout = document.getElementsByClassName("cards-to-select")[0];
+console.log(layout);
 
 /**
  * Shuffles the deck and displays 12 cards for selection
@@ -73,7 +74,11 @@ function addCardClickListener(card) {
 /**
  * sets up an event listener for the shuffle button, shuffles the dislay on click
  */
-document.querySelector(".shuffle-layout").addEventListener("click", () => {
+
+const shuffleButton = document.getElementsByClassName("shuffle-layout")[0];
+console.log(shuffleButton);
+
+shuffleButton.addEventListener("click", () => {
 	shuffleDeck();
 	backfaceCard.goldGlowCount = 0;
 });
