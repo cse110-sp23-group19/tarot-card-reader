@@ -27,7 +27,8 @@ function shuffleDeck() {
 			indexes.push(randomIndex);
 		}
 	}
-	layout.innerHTML = "";
+	if(layout)
+		layout.innerHTML = "";
 	displayShuffledCards();
 }
 
@@ -39,7 +40,8 @@ function displayShuffledCards() {
 		const newBackfaceCard = document.createElement("backface-card");
 		newBackfaceCard.index = index;
 
-		layout.appendChild(newBackfaceCard);
+		if(layout)
+			layout.appendChild(newBackfaceCard);
 		addCardClickListener(newBackfaceCard);
 	});
 }
@@ -75,24 +77,33 @@ function addCardClickListener(card) {
  * sets up an event listener for the shuffle button, shuffles the dislay on click
  */
 
-const shuffleButton = document.getElementsByClassName("shuffle-layout")[0];
+const shuffleButton = document.querySelector(".shuffle-layout");
 console.log(shuffleButton);
 
-shuffleButton.addEventListener("click", () => {
-	shuffleDeck();
-	backfaceCard.goldGlowCount = 0;
-});
+if(shuffleButton){
+	shuffleButton.addEventListener("click", () => {
+		shuffleDeck();
+		backfaceCard.goldGlowCount = 0;
+	});
+}
 
 /**
  * sets up an event listener for the submit button, displays the 3 selected cards
  */
-document.querySelector(".submit-selection").addEventListener("click", function () {
-	if (selectedCards.length < 3) {
-		alert("you do not have 3 cards selected");
-		return;
-	}
-	displayFortunePage();
-});
+
+const submitButton = document.querySelector(".submit-selection");
+console.log(submitButton);
+
+
+if(submitButton){
+	submitButton.addEventListener("click", function () {
+		if (selectedCards.length < 3) {
+			alert("you do not have 3 cards selected");
+			return;
+		}
+		displayFortunePage();
+	});
+}
 
 /**
  * removes the selection page, and makes the selected cards visible to user
