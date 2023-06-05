@@ -120,3 +120,36 @@ button::before {
 button:hover::before {
 	transform: translate(200%, 0%) rotate(45deg);
 }
+
+
+/* setting up the page setup. allign all elements
+   vertically */
+#landing-page {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	padding-top: 100px;
+	color: white;
+}
+
+/* setting up the size of the tarot card logo */
+.tarot-logo-container {
+	max-width: 500px;
+	max-height: 500px;
+}
+
+.tarot-logo-container img {
+	width: 200px;
+	height: auto;
+}
+
+
+img {
+	filter: invert();
+}
+
+section.hidden {
+	display: none;
+}
