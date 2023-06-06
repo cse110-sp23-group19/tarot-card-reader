@@ -40,6 +40,7 @@ function displayShuffledCards() {
     indexes.forEach((index) => {
         const newBackfaceCard = document.createElement("backface-card");
         newBackfaceCard.index = index;
+		newBackfaceCard.data = cards.tarot[index];
         newBackfaceCard.classList.add("shuffle"); // Add shuffle animation
         setTimeout(() => {
             newBackfaceCard.classList.remove("shuffle"); // Remove the class after the animation
@@ -138,16 +139,35 @@ class backfaceCard extends HTMLElement {
 		super();
 		this._index = null;
 		this._glowing = false;
+		this.data = null;
 		this.attachShadow({ mode: "open" });
-	}
-	connectedCallback() {
-		this.shadowRoot.innerHTML = `
+		const styleElement = document.createElement("style");
+		styleElement.innerHTML = `
 		<style>
-			div {
-				width: 200px;
-				height: 300px;
+			article{
+				position = relative;
+				width: 250px;
+				height: 320px;
+			}
+			card {
+				perspective: 600px;
+				position: absolute;
+				width: 100%
+				height: 100%
+				transform-style: preserve-3d;
+			}
+			front-fortune, back-fortune {
+				position: absolute;
+  				width: 100%;
+  				height: 100%;
+				backface-visibility: hidden;
+  				transition: transform 0.5s ease-in-out;
+			}
+			front-fortune{
+				transform: rotateY(180deg);
 			}
 			img {
+				position: relative;
 				width: 100%;
 				height: 100%
 			}
@@ -157,17 +177,36 @@ class backfaceCard extends HTMLElement {
 			div.goldGlow {
 				box-shadow: 0px 0px 10px 5px rgba(255, 215, 0, 0.7); /* Gold glow after click */
 			}
-		</style>
-		<div id="card">
-			<img src = "./assets/card-scans/backface-card.jpg">
-		</div>`;
-
+			back-fortune.flipped {
+				transform: rotateY(180deg);
+			  }  
+			front-fortune.flipped {
+				transform: rotateY(0);
+			}
+		</style>`
+		this.shadowRoot.appendChild(styleElement);
+		const articleElement = document.createElement("article");
+		articleElement.innerHTML = `
+		<div id="card-container">
+			<div id="card">
+				<div id ="card-back" class = "back-fortune">
+					<img id = "backImage" src = "./assets/card-scans/backface-card.jpg">
+				</div>
+			</div>
+		</div>`
+		this.shadowRoot.append(articleElement);
+	}
+	connectedCallback() {
 		// Add event listener for the click
 		this.shadowRoot.querySelector("#card").addEventListener("click", () => {
 			if (!this._glowing && backfaceCard.goldGlowCount < backfaceCard.maxGoldGlow) {
 				this.shadowRoot.querySelector("#card").classList.add("goldGlow");
 				this._glowing = true; // Update instance variable
 				backfaceCard.goldGlowCount++; // Increase count
+				console.log(this.shadowRoot.querySelector("#card-front"))
+				console.log(this.shadowRoot.querySelector("#card-back"))
+				this.shadowRoot.querySelector("#card-front").classList.toggle('flipped');
+				this.shadowRoot.querySelector("#card-back").classList.toggle('flipped');
 			}
 		});
 	}
@@ -177,6 +216,18 @@ class backfaceCard extends HTMLElement {
 
 	set index(index) {
 		this._index = index;
+
+	}
+
+	set data(data){
+		// If nothing was passed in, return
+		if (!data) return;
+		const articleDOM = this.shadowRoot.querySelector("article");
+		console.log(articleDOM.querySelector("#card-container"))
+		articleDOM.querySelector("#card").innerHTML += `
+		<div id ="card-front" class = "front-fortune">
+			<img id = "frontImage" src = "./assets/card-scans/${data.img}">
+		</div>`;
 	}
 }
 
@@ -194,8 +245,6 @@ class fortuneCard extends HTMLElement {
 			font-family: sans-serif;
 			margin: 0;
 			padding: 0px;
-
-
 		}
     
 		a {
@@ -245,16 +294,12 @@ class fortuneCard extends HTMLElement {
 		h3{
 			padding-top: 20px;
 			grid-row-start: 1;
-			
-
-
 		}
 
 		img{
 			height: 400px;
 			grid-row-start:2;
 			margin: auto;
-
 		}
 		`;
 		this.shadowRoot.appendChild(styleElement);
@@ -285,7 +330,6 @@ class fortuneCard extends HTMLElement {
 
 		articleDOM.innerHTML = `
       <div>
-
       <h3 class="card-title">${data["name"]}</h3>
 	  <br><br>
       <img src = "./assets/card-scans/${imageName}">
