@@ -1,7 +1,7 @@
 import { cards } from "./tarotCards.js";
 
 if (typeof module === "object") {
-    module.exports = { shuffleDeck };
+	module.exports = { shuffleDeck };
 }
 
 /**
@@ -18,24 +18,38 @@ let selectedCards = [];
 
 const layout = document.getElementsByClassName("cards-to-select")[0];
 
-
 /**
  * brings the user back to the shuffle cards page to give them a new reading if they choose to
  * fortune-page
  * selection-page
  */
-document.getElementsByClassName("get-new-reading").onclick = function () {
-	console.log("clicks");
-	document.getElementById("fortune-page").remove();
-	document.getElementById("selection-page").classList.remove("hidden");
+document.getElementById("get-new-reading").addEventListener("click", () => {
+	console.log("hit");
+	// remove fortune cards from fortune-page
+	let fortunes = document.getElementsByClassName("display-fortunes")[0];
+	fortunes.innerHTML = "";
+	//bring user back to card selection page
+	document.getElementById("fortune-page").classList = "hidden";
+	document.getElementById("selection-page").classList = "visible";
+	//reset the selection page states
+	resetSelectionPageStates();
+});
+
+/**
+ * This function resets the states of the selection page. This means no cadrs have been
+ * selected and the user is able to shuffle the deck
+ */
+function resetSelectionPageStates() {
+	backfaceCard.goldGlowCount = 0;
+	selectedCards = [];
 	shuffleDeck();
-};
+}
 
 const removeButton = document.getElementById("remove");
-if(removeButton){
-	removeButton.onclick = function() {
+if (removeButton) {
+	removeButton.onclick = function () {
 		document.getElementById("landing-page").remove();
-		document.getElementById("selection-page").classList.remove("hidden");
+		document.getElementById("selection-page").classList = "visible";
 		shuffleDeck();
 	};
 }
@@ -55,8 +69,7 @@ function shuffleDeck() {
 			indexes.push(randomIndex);
 		}
 	}
-	if(layout)
-		layout.innerHTML = "";
+	if (layout) layout.innerHTML = "";
 	displayShuffledCards();
 	return indexes;
 }
@@ -65,18 +78,17 @@ function shuffleDeck() {
  * displays each of the 12 shuffled cards to the display
  */
 function displayShuffledCards() {
-    indexes.forEach((index) => {
-        const newBackfaceCard = document.createElement("backface-card");
-        newBackfaceCard.index = index;
-        newBackfaceCard.classList.add("shuffle"); // Add shuffle animation
-        setTimeout(() => {
-            newBackfaceCard.classList.remove("shuffle"); // Remove the class after the animation
-        }, 500);
+	indexes.forEach((index) => {
+		const newBackfaceCard = document.createElement("backface-card");
+		newBackfaceCard.index = index;
+		newBackfaceCard.classList.add("shuffle"); // Add shuffle animation
+		setTimeout(() => {
+			newBackfaceCard.classList.remove("shuffle"); // Remove the class after the animation
+		}, 500);
 
-		if(layout)
-			layout.appendChild(newBackfaceCard);
-        addCardClickListener(newBackfaceCard);
-    });
+		if (layout) layout.appendChild(newBackfaceCard);
+		addCardClickListener(newBackfaceCard);
+	});
 }
 
 /**
@@ -117,11 +129,10 @@ let hoverSounds = [
 	document.getElementById("hover-sound-6"),
 ];
 
-
 const shuffleButton = document.querySelector(".shuffle-layout");
-if(shuffleButton){
+if (shuffleButton) {
 	shuffleButton.addEventListener("click", () => {
-		if (selectedCards.length != 0){
+		if (selectedCards.length != 0) {
 			return;
 		}
 		shuffleDeck();
@@ -136,7 +147,7 @@ if(shuffleButton){
  */
 let submitSound = document.getElementById("submit-sound");
 const submitButton = document.querySelector(".submit-selection");
-if(submitButton){
+if (submitButton) {
 	submitButton.addEventListener("click", function () {
 		if (selectedCards.length < 3) {
 			alert("you do not have 3 cards selected");
@@ -155,8 +166,9 @@ function displayFortunePage() {
 	const selectionPageElement = document.querySelector("#selection-page");
 	const fortunePageElement = document.querySelector("#fortune-page");
 
-	selectionPageElement.remove();
+	selectionPageElement.classList = "hidden";
 	fortunePageElement.style.visibility = "visible";
+	fortunePageElement.classList = "visible";
 
 	selectedCards.forEach((cardIndex) => {
 		const newCard = document.createElement("fortune-card");
@@ -322,7 +334,7 @@ class fortuneCard extends HTMLElement {
 		let imageName = data["img"];
 
 		articleDOM.innerHTML = `
-      <div>
+      <div class="fortune-card-container">
 
       <h3 class="card-title">${data["name"]}</h3>
 	  <br><br>
