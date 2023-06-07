@@ -1,4 +1,10 @@
-import { cards } from "./tarotCards.js";
+/**
+ * Import Tarot Card data using fetch
+ */
+ let cards = "";
+ fetch("./js/tarotCards.json")
+	 .then(response => response.json())
+	 .then(json => cards = json);
 
 if (typeof module === "object") {
 	module.exports = { shuffleDeck };
