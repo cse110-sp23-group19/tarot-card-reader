@@ -1,4 +1,4 @@
-import { cards } from "./tarotCards.js";
+import { cards } from "./tarotCards.json";
 
 if (typeof module === "object") {
     module.exports = { shuffleDeck };
