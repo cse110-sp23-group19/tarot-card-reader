@@ -1,38 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+		<!-- Meta tags for page encoding, compatibility and viewport -->
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!-- Page icon -->
 		<link rel="shortcut icon" href="./assets/cards.png" type="image/x-icon" />
+
+		<!-- Page title -->
 		<title>Online Tarot Reading</title>
 
 		<!-- Main Stylesheet & Scripts -->
+		<!-- Styles for the page -->
 		<link rel="stylesheet" href="./css/selection.css" />
+
+		<!-- Google font styles -->
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand" />
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Didact+Gothic" />
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo" />
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=MedievalSharp" />
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Yusei+Magic" />
 
+
+		<!-- JavaScript for the page -->
 		<script src="./js/selection.js" type="module"></script>
 		<script src="./js/tarotCards.js" type="module"></script>
 		<script src="./js/site-sounds.js" type="module"></script>
 	</head>
 
 	<body>
+		<!-- Background music -->
 		<audio id="bg-music" src="assets/sound-clips/background-music.mp3" autoplay loop hidden></audio>
+		
+		<!-- Button to toggle background music -->
 		<button id="mute-button">Toggle Background Music</button>
+
 		<main>
+			<!-- Sound to play when submit is pressed -->
 			<audio id="submit-sound" src="assets/sound-clips/submit-sound.mp3" preload="auto"></audio>
 
+			<!-- Landing page section -->
 			<section id="landing-page">
 				<header>
+					<!-- Logo container -->
 					<div class="tarot-logo-container">
 						<img src="./assets/cards.png" alt="playing cards icon" />
 					</div>
+					<!-- Page title -->
 					<h2>Tarot Card Reading</h2>
 				</header>
+
+				<!-- Navigation button to get reading -->
 				<nav>
 					<button id="remove" type="button" onclick="window.location.href='selection.html'">
 						Get Reading
@@ -40,15 +60,24 @@
 				</nav>
 			</section>
 
+			<!-- Selection page section (hidden by default) -->
 			<section id="selection-page" class="hidden">
 				<header>
 					<h2>Tarot Card Reading</h2>
 					<h4>Please select three cards:</h4>
+
+					<!-- Button to shuffle the card layout -->
 					<button class="shuffle-layout">Shuffle</button>
+
+					<!-- Container for the shuffled cards -->
 					<div class="cards-to-select">
 						<!-- this is where the 8 shuffled cards, face down will go -->
 					</div>
+
+					<!-- Button to submit card selection -->
 					<button class="submit-selection">Submit</button>
+
+					<!-- Sounds for card shuffling -->
 					<audio
 						id="hover-sound-6"
 						src="assets/sound-clips/shuffling-cards-6.mp3"
