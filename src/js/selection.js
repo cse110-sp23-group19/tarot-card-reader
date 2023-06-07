@@ -229,9 +229,8 @@ class fortuneCard extends HTMLElement {
 			border: 1px solid rgb(223, 225, 229);
 			border-radius: 8px;
 			padding: 0px 16px 16px 16px;
-			// height: 100%;
 			min-height: 700px; /* Set a minimum height for the container */
-			display: inline-block; /* Allow the container to grow with the text */
+
 			
 		}
 		.card-title{
