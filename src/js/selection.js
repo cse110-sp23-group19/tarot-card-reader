@@ -1,6 +1,8 @@
 import { cards } from "./tarotCards.js";
 
-module.exports = { shuffleDeck };
+if (typeof module === 'object') {
+    module.exports = { shuffleDeck };
+}
 
 /**
  * An array of indices referencing the shuffled cards displayed on screen
