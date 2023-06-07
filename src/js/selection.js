@@ -14,9 +14,20 @@ let selectedCards = [];
 
 const layout = document.getElementsByClassName("cards-to-select")[0];
 
+document.getElementById("remove").onclick = function () {
+	document.getElementById("landing-page").remove();
+	document.getElementById("selection-page").classList.remove("hidden");
+	shuffleDeck();
+};
 
-document.getElementById("remove").onclick = function() {
-    document.getElementById("landing-page").remove();
+/**
+ * brings the user back to the shuffle cards page to give them a new reading if they choose to
+ * fortune-page
+ * selection-page
+ */
+document.getElementsByClassName("get-new-reading").onclick = function () {
+	console.log("clicks");
+	document.getElementById("fortune-page").remove();
 	document.getElementById("selection-page").classList.remove("hidden");
 	shuffleDeck();
 };
@@ -25,7 +36,7 @@ document.getElementById("remove").onclick = function() {
  * Shuffles the deck and displays 12 cards for selection
  */
 function shuffleDeck() {
-	if (selectedCards.length != 0){
+	if (selectedCards.length != 0) {
 		return;
 	}
 	selectedCards = [];
@@ -44,17 +55,17 @@ function shuffleDeck() {
  * displays each of the 12 shuffled cards to the display
  */
 function displayShuffledCards() {
-    indexes.forEach((index) => {
-        const newBackfaceCard = document.createElement("backface-card");
-        newBackfaceCard.index = index;
-        newBackfaceCard.classList.add("shuffle"); // Add shuffle animation
-        setTimeout(() => {
-            newBackfaceCard.classList.remove("shuffle"); // Remove the class after the animation
-        }, 500);
+	indexes.forEach((index) => {
+		const newBackfaceCard = document.createElement("backface-card");
+		newBackfaceCard.index = index;
+		newBackfaceCard.classList.add("shuffle"); // Add shuffle animation
+		setTimeout(() => {
+			newBackfaceCard.classList.remove("shuffle"); // Remove the class after the animation
+		}, 500);
 
-        layout.appendChild(newBackfaceCard);
-        addCardClickListener(newBackfaceCard);
-    });
+		layout.appendChild(newBackfaceCard);
+		addCardClickListener(newBackfaceCard);
+	});
 }
 
 /**
@@ -95,7 +106,7 @@ let hoverSounds = [
 	document.getElementById("hover-sound-6"),
 ];
 document.querySelector(".shuffle-layout").addEventListener("click", () => {
-	if (selectedCards.length != 0){
+	if (selectedCards.length != 0) {
 		return;
 	}
 	shuffleDeck();
@@ -219,6 +230,8 @@ class fortuneCard extends HTMLElement {
 			border-radius: 8px;
 			padding: 0px 16px 16px 16px;
 			// height: 100%;
+			min-height: 700px; /* Set a minimum height for the container */
+			display: inline-block; /* Allow the container to grow with the text */
 			
 		}
 		.card-title{
