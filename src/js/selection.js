@@ -1,5 +1,7 @@
 import { cards } from "./tarotCards.js";
 
+module.exports = { shuffleDeck };
+
 /**
  * An array of indices referencing the shuffled cards displayed on screen
  * @type {number[]}
@@ -14,12 +16,14 @@ let selectedCards = [];
 
 const layout = document.getElementsByClassName("cards-to-select")[0];
 
-
-document.getElementById("remove").onclick = function() {
-    document.getElementById("landing-page").remove();
-	document.getElementById("selection-page").classList.remove("hidden");
-	shuffleDeck();
-};
+const removeButton = document.getElementById("remove");
+if(removeButton){
+	removeButton.onclick = function() {
+		document.getElementById("landing-page").remove();
+		document.getElementById("selection-page").classList.remove("hidden");
+		shuffleDeck();
+	};
+}
 
 /**
  * Shuffles the deck and displays 12 cards for selection
@@ -36,8 +40,10 @@ function shuffleDeck() {
 			indexes.push(randomIndex);
 		}
 	}
-	layout.innerHTML = "";
+	if(layout)
+		layout.innerHTML = "";
 	displayShuffledCards();
+	return indexes;
 }
 
 /**
@@ -52,7 +58,8 @@ function displayShuffledCards() {
             newBackfaceCard.classList.remove("shuffle"); // Remove the class after the animation
         }, 500);
 
-        layout.appendChild(newBackfaceCard);
+		if(layout)
+			layout.appendChild(newBackfaceCard);
         addCardClickListener(newBackfaceCard);
     });
 }
@@ -94,28 +101,36 @@ let hoverSounds = [
 	document.getElementById("hover-sound-5"),
 	document.getElementById("hover-sound-6"),
 ];
-document.querySelector(".shuffle-layout").addEventListener("click", () => {
-	if (selectedCards.length != 0){
-		return;
-	}
-	shuffleDeck();
-	backfaceCard.goldGlowCount = 0;
-	let randomSound = hoverSounds[Math.floor(Math.random() * hoverSounds.length)];
-	randomSound.play();
-});
+
+
+const shuffleButton = document.querySelector(".shuffle-layout");
+if(shuffleButton){
+	shuffleButton.addEventListener("click", () => {
+		if (selectedCards.length != 0){
+			return;
+		}
+		shuffleDeck();
+		backfaceCard.goldGlowCount = 0;
+		let randomSound = hoverSounds[Math.floor(Math.random() * hoverSounds.length)];
+		randomSound.play();
+	});
+}
 
 /**
  * sets up an event listener for the submit button, displays the 3 selected cards
  */
 let submitSound = document.getElementById("submit-sound");
-document.querySelector(".submit-selection").addEventListener("click", function () {
-	if (selectedCards.length < 3) {
-		alert("you do not have 3 cards selected");
-		return;
-	}
-	submitSound.play();
-	displayFortunePage();
-});
+const submitButton = document.querySelector(".submit-selection");
+if(submitButton){
+	submitButton.addEventListener("click", function () {
+		if (selectedCards.length < 3) {
+			alert("you do not have 3 cards selected");
+			return;
+		}
+		submitSound.play();
+		displayFortunePage();
+	});
+}
 
 /**
  * removes the selection page, and makes the selected cards visible to user
