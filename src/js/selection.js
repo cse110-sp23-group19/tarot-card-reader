@@ -1,5 +1,9 @@
+// Imports the 'cards' object from the 'tarotCards.js' file
 import { cards } from "./tarotCards.js";
 
+
+// This conditional checks if the code is running in a Node.js environment (common for testing)
+// If it is, it exports the 'shuffleDeck' function for use in testing
 if (typeof module === "object") {
 	module.exports = { shuffleDeck };
 }
@@ -45,6 +49,10 @@ function resetSelectionPageStates() {
 	shuffleDeck();
 }
 
+
+// This button, when clicked, will reset the fortunes page, removing any current fortunes,
+// and return the user to the card selection page
+// It also resets the state of the card selection page by calling the 'resetSelectionPageStates' function
 const removeButton = document.getElementById("remove");
 if (removeButton) {
 	removeButton.onclick = function () {
@@ -56,6 +64,7 @@ if (removeButton) {
 
 /**
  * Shuffles the deck and displays 12 cards for selection
+ * The shuffling operation only proceeds if no cards have been selected (selectedCards.length is 0)
  */
 function shuffleDeck() {
 	if (selectedCards.length != 0) {
@@ -75,7 +84,7 @@ function shuffleDeck() {
 }
 
 /**
- * displays each of the 12 shuffled cards to the display
+ * function creates and displays each of the 12 shuffled cards to the display
  */
 function displayShuffledCards() {
 	indexes.forEach((index) => {
@@ -129,6 +138,9 @@ let hoverSounds = [
 	document.getElementById("hover-sound-6"),
 ];
 
+
+// The 'shuffleDeck' function shuffles the deck and displays 12 cards for selection
+// The shuffling operation only proceeds if no cards have been selected (selectedCards.length is 0)
 const shuffleButton = document.querySelector(".shuffle-layout");
 if (shuffleButton) {
 	shuffleButton.addEventListener("click", () => {
@@ -144,6 +156,9 @@ if (shuffleButton) {
 
 /**
  * sets up an event listener for the submit button, displays the 3 selected cards
+ * The 'submitButton' element, when clicked, checks if 3 cards have been selected
+ * If less than 3 cards have been selected, it gives an alert message
+ * If exactly 3 cards have been selected, it plays a sound and displays the fortunes page
  */
 let submitSound = document.getElementById("submit-sound");
 const submitButton = document.querySelector(".submit-selection");
@@ -160,6 +175,7 @@ if (submitButton) {
 
 /**
  * removes the selection page, and makes the selected cards visible to user
+ * and displays the selected cards on the fortunes page
  */
 function displayFortunePage() {
 	const fortuneReadingsDisplay = document.querySelector(".display-fortunes");
@@ -347,6 +363,7 @@ class fortuneCard extends HTMLElement {
 
 customElements.define("backface-card", backfaceCard);
 customElements.define("fortune-card", fortuneCard);
+
 
 /**
  * Calls shuffleDeck on window load in order to setup the initial layout
