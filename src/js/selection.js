@@ -18,6 +18,19 @@ let selectedCards = [];
 
 const layout = document.getElementsByClassName("cards-to-select")[0];
 
+
+/**
+ * brings the user back to the shuffle cards page to give them a new reading if they choose to
+ * fortune-page
+ * selection-page
+ */
+document.getElementsByClassName("get-new-reading").onclick = function () {
+	console.log("clicks");
+	document.getElementById("fortune-page").remove();
+	document.getElementById("selection-page").classList.remove("hidden");
+	shuffleDeck();
+};
+
 const removeButton = document.getElementById("remove");
 if(removeButton){
 	removeButton.onclick = function() {
@@ -31,7 +44,7 @@ if(removeButton){
  * Shuffles the deck and displays 12 cards for selection
  */
 function shuffleDeck() {
-	if (selectedCards.length != 0){
+	if (selectedCards.length != 0) {
 		return;
 	}
 	selectedCards = [];
@@ -235,7 +248,8 @@ class fortuneCard extends HTMLElement {
 			border: 1px solid rgb(223, 225, 229);
 			border-radius: 8px;
 			padding: 0px 16px 16px 16px;
-			// height: 100%;
+			min-height: 700px; /* Set a minimum height for the container */
+
 			
 		}
 		.card-title{

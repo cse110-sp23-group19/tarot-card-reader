@@ -27,18 +27,24 @@ h4 {
 	font-weight: 5px;
 }
 .display-fortunes {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjust '200px' to the minimum size you want the cards to be */
-    gap: 20px; /* Adjust '20px' to the gap you want between the cards */
-    padding: 10px; /* Adjust '20px' to control the space between the cards and the screen edge */
+	
+
+
+	display: flex;
+	flex-wrap: wrap;
+	align-content: center;
+	justify-content: center;
+	
 }
 
 .cards-to-select {
 	text-align: center;
-	display: grid;
+	display: flex;
 	grid-template-columns: repeat(6, 1fr);
+	flex-wrap:wrap;
 	grid-gap: 35px;
-	padding: 0px 50px 0px 50px;
+	padding: 20px 50px 20px 50px;
+	justify-content: center;
 }
 
 @keyframes shuffle {
