@@ -1,5 +1,9 @@
 # Team 19
 
+## Tarot Card Reading Website
+
+[Tarot Card Reading](https://cse110-sp23-group19.github.io/tarot-card-reader/src/)
+
 ## Jest
 We are using Jest as our unit test service. To run unit tests do the following:
 1. Export all necesary functions using `module.exports`
