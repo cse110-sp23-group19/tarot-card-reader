@@ -3,8 +3,8 @@
  */
  let cards = "";
  fetch("./js/tarotCards.json")
-	 .then(response => response.json())
-	 .then(json => cards = json);
+	.then(response => response.json())
+	.then(json => cards = json);
 
 if (typeof module === "object") {
 	module.exports = { shuffleDeck };
