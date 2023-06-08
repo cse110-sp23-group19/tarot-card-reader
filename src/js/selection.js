@@ -33,7 +33,6 @@ const layout = document.getElementsByClassName("cards-to-select")[0];
  * selection-page
  */
 document.getElementById("get-new-reading").addEventListener("click", () => {
-	console.log("hit");
 	// remove fortune cards from fortune-page
 	let fortunes = document.getElementsByClassName("display-fortunes")[0];
 	fortunes.innerHTML = "";
