@@ -1,5 +1,10 @@
-// Imports the 'cards' object from the 'tarotCards.js' file
-import { cards } from "./tarotCards.js";
+/**
+ * Import Tarot Card data using fetch
+ */
+ let cards = "";
+ fetch("./js/tarotCards.json")
+	.then(response => response.json())
+	.then(json => cards = json);
 
 
 // This conditional checks if the code is running in a Node.js environment (common for testing)
