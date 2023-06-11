@@ -1,16 +1,17 @@
 /**
- * Import Tarot Card data using fetch
+ * @file Implements javascript for website functionality
+ */
+
+/**
+ * contains tarot card data using tarotCards.json
  */
  let cards = "";
  fetch("./js/tarotCards.json")
 	.then(response => response.json())
 	.then(json => cards = json);
 
-
-/**
- * This conditional checks if the code is running in a Node.js environment (common for testing)
- * If it is, it exports the 'shuffleDeck' function for use in testing
- */
+// This conditional checks if the code is running in a Node.js environment (common for testing)
+// If it is, it exports the 'shuffleDeck' function for use in testing
 if (typeof module === "object") {
 	module.exports = { shuffleDeck };
 }
@@ -29,9 +30,7 @@ let selectedCards = [];
 
 const layout = document.getElementsByClassName("cards-to-select")[0];
 
-/**
- * Brings the user back to the shuffle cards page to give them a new reading if they choose to
- */
+// Brings the user back to the shuffle cards page to give them a new reading if they choose to
 document.getElementById("get-new-reading").addEventListener("click", () => {
 	// remove fortune cards from fortune-page
 	let fortunes = document.getElementsByClassName("display-fortunes")[0];
@@ -53,11 +52,9 @@ function resetSelectionPageStates() {
 	shuffleDeck();
 }
 
-/**
- * This button resets the fortunes page, removing any current fortunes
- * and return the user to the card selection page 
- * It also resets the card selection page by calling the 'resetSelectionPageStates' function
- */
+// This button resets the fortunes page, removing any current fortunes
+// and return the user to the card selection page 
+// It also resets the card selection page by calling the 'resetSelectionPageStates' function
 const removeButton = document.getElementById("remove");
 if (removeButton) {
 	removeButton.onclick = function () {
@@ -72,6 +69,7 @@ if (removeButton) {
 /**
  * Shuffles the deck and displays 12 cards for selection
  * The shuffling operation only proceeds if no cards have been selected 
+ * @returns array of card indices to represent layout order of cards
  */
 function shuffleDeck() {
 	// cannot shuffle if user has already selected a card
@@ -107,18 +105,17 @@ function displayShuffledCards() {
 		setTimeout(() => {
 			newBackfaceCard.classList.remove("shuffle"); 
 		}, 500);
-
 		if (layout) layout.appendChild(newBackfaceCard);
 		addCardClickListener(newBackfaceCard);
 	});
 }
 
+let selectSound = document.getElementById("click-select");
 /**
  * Sets up an event listener for each fortuneCard
  * If the card was "clicked", then it gets added to our array of selected cards
  * @param {HTMLElement} card card to add event listener to
  */
-let selectSound = document.getElementById("click-select");
 function addCardClickListener(card) {
 	card.addEventListener("click", function () {
 		// warn the user if card has already been selected
@@ -140,10 +137,8 @@ function addCardClickListener(card) {
 	});
 }
 
-/**
- * Sets up an event listener for the shuffle button, shuffles the dislay on click
- * Once the user clicks the shuffle button, a card shuffling sound will play
- */
+ // sets up an event listener for the shuffle button, shuffles the dislay on click
+ // once the user clicks the shuffle button, a card shuffling sound will play
 let hoverSounds = [
 	document.getElementById("hover-sound-1"),
 	document.getElementById("hover-sound-2"),
@@ -153,10 +148,8 @@ let hoverSounds = [
 	document.getElementById("hover-sound-6"),
 ];
 
-/**
- * Sets up the shuffle button functionality
- * The button is only available if the user has not selected any cards.
- */
+// sets up the shuffle button functionality
+// the button is only available if the user has not selected any cards.
 const shuffleButton = document.querySelector(".shuffle-layout");
 if (shuffleButton) {
 	shuffleButton.addEventListener("click", () => {
@@ -170,12 +163,10 @@ if (shuffleButton) {
 	});
 }
 
-/**
- * Sets up an event listener for the submit button, displays the 3 selected cards
- * The 'submitButton' element, when clicked, checks if 3 cards have been selected
- */
+// Sets up an event listener for the submit button, displays the 3 selected cards
+// The 'submitButton' element, when clicked, checks if 3 cards have been selected
 let submitSound = document.getElementById("submit-sound");
-const submitButton = document.querySelector(".submit-selection");
+let submitButton = document.querySelector(".submit-selection");
 if (submitButton) {
 	submitButton.addEventListener("click", function () {
 		// if less than 3 cards have been selected, give an alert message
@@ -194,9 +185,9 @@ if (submitButton) {
  * and displays the selected cards on the fortunes page
  */
 function displayFortunePage() {
-	const fortuneReadingsDisplay = document.querySelector(".display-fortunes");
-	const selectionPageElement = document.querySelector("#selection-page");
-	const fortunePageElement = document.querySelector("#fortune-page");
+	let fortuneReadingsDisplay = document.querySelector(".display-fortunes");
+	let selectionPageElement = document.querySelector("#selection-page");
+	let fortunePageElement = document.querySelector("#fortune-page");
 	// switch from selection page to display fortune page
 	selectionPageElement.classList = "hidden";
 	fortunePageElement.style.visibility = "visible";
@@ -204,13 +195,13 @@ function displayFortunePage() {
 	// for each of the selected cards, set the card info to 
 	// the card details in tarotCard.js
 	selectedCards.forEach((cardIndex) => {
-		const newCard = document.createElement("fortune-card");
+		let newCard = document.createElement("fortune-card");
 		newCard.data = cards.tarot[cardIndex];
 		fortuneReadingsDisplay.appendChild(newCard);
 	});
 }
 /**
- * Back of fortune card custom HTML element for selection page
+ * @classdesc Back of fortune card custom HTML element for selection page
  */
 class backfaceCard extends HTMLElement {
 	static goldGlowCount = 0;
@@ -220,7 +211,13 @@ class backfaceCard extends HTMLElement {
 	 */
 	constructor() {
 		super();
+		/**
+		 * @instance
+		 */
 		this._index = null;
+		/** 
+		 * @instance
+		 */
 		this._glowing = false;
 		this.attachShadow({ mode: "open" });
 	}
@@ -261,15 +258,17 @@ class backfaceCard extends HTMLElement {
 			}
 		});
 	}
-	/**
-	 * returns the index of the backfaceCard
+	/** 
+	 * Returns _index value
+	 * @ignore
 	 */
 	get index() {
 		return this._index;
 	}
-	/**
-	 * sets the index of the backfaceCard
-	 * @param {Number} index number to set index to
+	/** 
+	 * Sets _index value
+	 * @ignore
+	 * @param {Number} index value to set _index
 	 */
 	set index(index) {
 		this._index = index;
@@ -286,8 +285,8 @@ class fortuneCard extends HTMLElement {
 	constructor() {
 		super();
 		this.attachShadow({ mode: "open" });
-		const articleElement = document.createElement("article");
-		const styleElement = document.createElement("style");
+		let articleElement = document.createElement("article");
+		let styleElement = document.createElement("style");
 		styleElement.textContent = `
       	* {
 			font-family: sans-serif;
@@ -363,12 +362,13 @@ class fortuneCard extends HTMLElement {
 
 	/** 
 	 * Matches the selected cards to the card image, name, and meaning
+	 * @ignore
 	 * @param {Object} data index from the "tarot" array in the tarotCards.json file
 	 */
 	set data(data) {
 		// if nothing was passed in, return
 		if (!data) return;
-		const articleDOM = this.shadowRoot.querySelector("article");
+		let articleDOM = this.shadowRoot.querySelector("article");
 		let imageName = data["img"];
 		articleDOM.innerHTML = `
     	<div class="fortune-card-container">

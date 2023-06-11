@@ -1,3 +1,7 @@
+/**
+ * @file Implements javascript for website sounds
+ */
+
 // retrieve the HTML element for the background music
 let music = document.getElementById("bg-music");
 // retrieve the HTML element for the mute button
@@ -5,6 +9,7 @@ const playButton = document.getElementById("mute-button");
 
 /**
  * Function to get the music muted state from localStorage
+ * @returns music muted state
  */
 function getMusicMutedState() {
 	try {
@@ -40,7 +45,7 @@ function toggleMusic() {
 
 /**
  * Function to set the music muted state in localStorage
- * @param {*} value 
+ * @param {Boolean} value music muted state
  */
 function setMusicMutedState(value) {
 	try {
