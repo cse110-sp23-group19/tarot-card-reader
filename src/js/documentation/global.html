@@ -98,6 +98,68 @@
 
         
             
+<h4 class="name" id="cards"><span class="type-signature"></span>cards<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    contains tarot card data using tarotCards.json
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="selection.js.html">selection.js</a>, <a href="selection.js.html#line8">line 8</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
 <h4 class="name" id="indexes"><span class="type-signature"></span>indexes<span class="type-signature"> :Array.&lt;number></span></h4>
 
 
@@ -152,7 +214,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="selection.js.html">selection.js</a>, <a href="selection.js.html#line7">line 7</a>
+        <a href="selection.js.html">selection.js</a>, <a href="selection.js.html#line23">line 23</a>
     </li></ul></dd>
     
 
@@ -224,7 +286,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="selection.js.html">selection.js</a>, <a href="selection.js.html#line13">line 13</a>
+        <a href="selection.js.html">selection.js</a>, <a href="selection.js.html#line29">line 29</a>
     </li></ul></dd>
     
 
@@ -260,7 +322,7 @@
 
 
 <div class="description">
-    sets up an event listener for each fortuneCard
+    Sets up an event listener for each fortuneCardIf the card was "clicked", then it gets added to our array of selected cards
 </div>
 
 
@@ -312,7 +374,7 @@
 
             
 
-            <td class="description last"></td>
+            <td class="description last">card to add event listener to</td>
         </tr>
 
     
@@ -353,7 +415,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="selection.js.html">selection.js</a>, <a href="selection.js.html#line54">line 54</a>
+        <a href="selection.js.html">selection.js</a>, <a href="selection.js.html#line119">line 119</a>
     </li></ul></dd>
     
 
@@ -397,7 +459,7 @@
 
 
 <div class="description">
-    removes the selection page, and makes the selected cards visible to user
+    Removes the selection page, makes the selected cards visible to userand displays the selected cards on the fortunes page
 </div>
 
 
@@ -441,7 +503,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="selection.js.html">selection.js</a>, <a href="selection.js.html#line94">line 94</a>
+        <a href="selection.js.html">selection.js</a>, <a href="selection.js.html#line187">line 187</a>
     </li></ul></dd>
     
 
@@ -485,7 +547,7 @@
 
 
 <div class="description">
-    displays each of the 12 shuffled cards to the display
+    Creates and displays each of the 12 shuffled cards to the display
 </div>
 
 
@@ -529,7 +591,330 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="selection.js.html">selection.js</a>, <a href="selection.js.html#line37">line 37</a>
+        <a href="selection.js.html">selection.js</a>, <a href="selection.js.html#line98">line 98</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="getMusicMutedState"><span class="type-signature"></span>getMusicMutedState<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Function to get the music muted state from localStorage
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="site-sounds.js.html">site-sounds.js</a>, <a href="site-sounds.js.html#line14">line 14</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    music muted state
+</div>
+
+
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="resetSelectionPageStates"><span class="type-signature"></span>resetSelectionPageStates<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Resets the states of the selection page. This means no cards have beenselected and the user is able to shuffle the deck
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="selection.js.html">selection.js</a>, <a href="selection.js.html#line49">line 49</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="setMusicMutedState"><span class="type-signature"></span>setMusicMutedState<span class="signature">(value)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Function to set the music muted state in localStorage
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">music muted state</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="site-sounds.js.html">site-sounds.js</a>, <a href="site-sounds.js.html#line50">line 50</a>
     </li></ul></dd>
     
 
@@ -573,7 +958,7 @@
 
 
 <div class="description">
-    Shuffles the deck and displays 12 cards for selection
+    Shuffles the deck and displays 12 cards for selectionThe shuffling operation only proceeds if no cards have been selected
 </div>
 
 
@@ -617,7 +1002,105 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="selection.js.html">selection.js</a>, <a href="selection.js.html#line20">line 20</a>
+        <a href="selection.js.html">selection.js</a>, <a href="selection.js.html#line74">line 74</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    array of card indices to represent layout order of cards
+</div>
+
+
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="toggleMusic"><span class="type-signature"></span>toggleMusic<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Function to toggle the state of the music (either mute or unmute)
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="site-sounds.js.html">site-sounds.js</a>, <a href="site-sounds.js.html#line32">line 32</a>
     </li></ul></dd>
     
 
@@ -663,13 +1146,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="backfaceCard.html">backfaceCard</a></li><li><a href="fortuneCard.html">fortuneCard</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addCardClickListener">addCardClickListener</a></li><li><a href="global.html#displayFortunePage">displayFortunePage</a></li><li><a href="global.html#displayShuffledCards">displayShuffledCards</a></li><li><a href="global.html#indexes">indexes</a></li><li><a href="global.html#selectedCards">selectedCards</a></li><li><a href="global.html#shuffleDeck">shuffleDeck</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="backfaceCard.html">backfaceCard</a></li><li><a href="fortuneCard.html">fortuneCard</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addCardClickListener">addCardClickListener</a></li><li><a href="global.html#cards">cards</a></li><li><a href="global.html#displayFortunePage">displayFortunePage</a></li><li><a href="global.html#displayShuffledCards">displayShuffledCards</a></li><li><a href="global.html#getMusicMutedState">getMusicMutedState</a></li><li><a href="global.html#indexes">indexes</a></li><li><a href="global.html#resetSelectionPageStates">resetSelectionPageStates</a></li><li><a href="global.html#selectedCards">selectedCards</a></li><li><a href="global.html#setMusicMutedState">setMusicMutedState</a></li><li><a href="global.html#shuffleDeck">shuffleDeck</a></li><li><a href="global.html#toggleMusic">toggleMusic</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Thu May 25 2023 21:45:10 GMT-0700 (Pacific Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Sun Jun 11 2023 01:24:24 GMT-0700 (Pacific Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>
