@@ -17,6 +17,8 @@ Here is an example output:
 Code Climate has been added to our repo and the analysis is :
 [![Maintainability](https://api.codeclimate.com/v1/badges/05aa89d1b29169024899/maintainability)](https://codeclimate.com/github/cse110-sp23-group19/tarot-card-reader/maintainability)
 
+Click on the badge for more info.
+
 
 ## JsDocs
 We are using JsDocs to automatically create/update our documentation website everytime code is pushed to the repo. 
