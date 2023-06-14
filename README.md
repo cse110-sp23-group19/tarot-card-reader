@@ -9,9 +9,15 @@ Welcome to the our Tarot Card Reading website, an exciting online resource that 
 Tarot card reading is an ancient practice that has captivated and intrigued individuals for centuries. Rooted in symbolism and intuition, Tarot cards offer a unique window into the subconscious, enabling us to gain insights, clarity, and guidance regarding various aspects of our lives. Each card carries its own distinctive meaning and message, forming a rich tapestry of wisdom that can be unraveled through careful interpretation.
 
 ### Our Mission
-As the 0xDEADBEEF cows, our mission is to make the fascinating world of Tarot accessible to everyone. We believe that each person possesses the innate ability to tap into their intuition and discover profound truths about themselves and their life path. We aim to empower individuals from all walks of life to embark on their own Tarot journeys and unlock the hidden wisdom within.
+As the 0xDEADBEEF Cows, our mission is to make the fascinating world of Tarot accessible to everyone. We believe that each person possesses the innate ability to tap into their intuition and discover profound truths about themselves and their life path. We aim to empower individuals from all walks of life to embark on their own Tarot journeys and unlock the hidden wisdom within.
 
 ### Get Started on Your Tarot Journey!
+Are you ready to embark on an exciting adventure of self-discovery and divination? Begin your Tarot journey today by exploring our website and immersing yourself in the captivating world of Tarot card reading. Whether you're seeking answers, guidance, or personal growth, we are here to support you every step of the way. Trust in your intuition, unlock the secrets of the cards, and discover the profound insights that await you.
+
+Happy reading!
+
+The 0xDEADBEEF Cows
+
 [Link to your Tarot Card Reading](https://cse110-sp23-group19.github.io/tarot-card-reader/src/)
 
 #### The Beginning of Your Journey
