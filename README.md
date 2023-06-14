@@ -20,13 +20,15 @@ The 0xDEADBEEF Cows
 
 [Link to your Tarot Card Reading](https://cse110-sp23-group19.github.io/tarot-card-reader/src/)
 
-#### The Beginning of Your Journey
+---
+
+### Beginning Your Journey
 After clicking the link, you will reach our landing page. Here you can begin your Tarot Journey by thinking about a question you want to explore. Open-ended questions are preferred over yes/no questions because they allow for a more nuanced and detailed response from the cards. With a question in mind, we can begin selecting cards by clicking on the "**Get Reading**" button. Feel free to toggle the music on our off with the "**Toggle Background Music**" button, though we suggest turning it on for a better Tarot experience!
 
-#### Choosing Your Destiny
+### Choosing Your Destiny
 Once you have gotten your reading, you will see 12 cards to choose from. Feel free to shuffle the cards as much as you want using the "**Shuffle**" button, but be warned, once you choose you first card, your fate has been locked in. This means that *there is no turning back after selecting your cards*! Make sure you are happy with your shuffles and card choice before locking it in. Once you have chosen three cards, click on the "**Submit**" button button at the bottom of the page.
 
-#### Revealing Your Future
+### Revealing Your Future
 Congratulations, you have completed your self Tarot Card Reading! You can see the cards you chose and their meanings. Hopefully these cards give you insight into the question you had in mind. If you more questions on your mind, feel free to get a new reading by clicking the "**Get new Reading!**" button. 
 
 ## CI/CD
