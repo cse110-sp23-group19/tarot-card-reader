@@ -2,8 +2,6 @@
 
 ## Tarot Card Reading Website
 
-[Tarot Card Reading](https://cse110-sp23-group19.github.io/tarot-card-reader/src/)
-
 ### Introduction
 Welcome to the our Tarot Card Reading website, an exciting online resource that empowers you to explore the mystical world of Tarot card readings right from the comfort of your own home. Whether you're a seasoned Tarot enthusiast or a curious beginner, this website is designed to provide you with all the tools and guidance you need to embark on your personal journey of self-discovery and divination.
 
